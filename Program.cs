@@ -6,7 +6,9 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        //args example: a,b,c c,d,e
+        //args example: 
+        //a,b,c c,d,e
+        //a,a,a a,a
         string[] a = args[0].Split(",");
         string[] b = args[1].Split(",");
 
@@ -16,6 +18,9 @@ public static class Program
 
     private static bool can_shift(string[] a, string[] b)
     {
+        if (a.Length != b.Length)
+            return false;
+
         Dictionary<string, int> data = new();
         foreach(var element in a)
         {
