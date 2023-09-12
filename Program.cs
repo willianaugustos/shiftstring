@@ -7,38 +7,28 @@ public static class Program
     public static void Main(string[] args)
     {
         //args example: 
-        //a,b,c c,d,e
-        //a,a,a a,a
-        string[] a = args[0].Split(",");
-        string[] b = args[1].Split(",");
+        //abcd bcda
+        string a = args[0];
+        string b = args[1];
 
         var result = can_shift(a, b);
         Console.WriteLine($" Result of can_shift is: {result}");
     }
 
-    private static bool can_shift(string[] a, string[] b)
+    private static bool can_shift(string a, string b)
     {
         if (a.Length != b.Length)
             return false;
 
-        Dictionary<string, int> data = new();
-        foreach(var element in a)
-        {
-            if (!data.ContainsKey(element))
-                data.Add(element, 1);
-            else
-                data[element] ++;
-        }
+        int posBinA = a.IndexOf(b[0]);
+        if (posBinA == -1)
+            return false;
+        Console.WriteLine(posBinA);
 
-        foreach (var elementB in b)
-        {
-            if (!data.ContainsKey(elementB))
-                return false;
-
-            data[elementB] --;
-            if (data[elementB] < 0 )
-                return false;
-        }
+        var newString = a.Substring(posBinA)+a.Substring(0, posBinA);
+        Console.WriteLine($"NEw String: {newString}");
+        if (!newString.Equals(b))
+            return false;
 
         return true;
     }
