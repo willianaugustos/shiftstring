@@ -23,10 +23,9 @@ public static class Program
         int posBinA = a.IndexOf(b[0]);
         if (posBinA == -1)
             return false;
-        Console.WriteLine(posBinA);
 
         var newString = a.Substring(posBinA)+a.Substring(0, posBinA);
-        Console.WriteLine($"NEw String: {newString}");
+        
         if (!newString.Equals(b))
             return false;
 
